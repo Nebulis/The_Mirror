@@ -26,10 +26,10 @@ export class TrafficComponent implements OnInit{
   public styles:any;
 
   constructor(public elementRef:ElementRef,private trafficService : TrafficService, private apikeyService : ApikeyService) {
-    this.latMapCenter = 44.834741;
-    this.lngMapCenter = -0.588890;
-    this.latMarker = 44.807260;
-    this.lngMarker = -0.605569;
+    this.latMapCenter = 47.2172500;
+    this.lngMapCenter = -1.5533600;
+    this.latMarker = 47.2134336;
+    this.lngMarker = -1.5474509;
     this.zoom = 10;
     this.styles = [
       {"featureType":"all","elementType":"labels","stylers":[{"visibility":"off"}]},

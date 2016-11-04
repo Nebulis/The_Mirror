@@ -1,6 +1,7 @@
 # file
 /ideas
 /src/app/apikey/apikey.service.ts
+*.iml
 
 # compiled output
 /build
@@ -9,6 +10,7 @@
 # dependencies
 /node_modules
 /bower_components
+yarn.lock
 
 # IDEs and editors
 /.idea
