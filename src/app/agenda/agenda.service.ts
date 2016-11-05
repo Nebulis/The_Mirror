@@ -8,9 +8,18 @@ function flatten (list) {
   return list.reduce((a, b) => (Array.isArray(b) ? a.push(...flatten(b)) : a.push(b), a), [])
 }
 
+const rooms = {
+  1:'Titan',
+  2:'Belem',
+  3:'Tour de Bretagne',
+  4:'Graslin',
+  5:'Les machines',
+  6:'Tour Lu',
+}
+
 @Injectable()
 export class AgendaService {
-  public api_url : String = "/app/assets/devfest.json";
+  public api_url : String = "https://devfest.gdgnantes.com/assets/devfest.json";
   public http : any;
 
   constructor(http : Http) {
@@ -18,7 +27,7 @@ export class AgendaService {
   }
 
   getZenikaSessions(){
-    let headers = new Headers({ 'Content-Type': 'application/json', 'Access-Control-Request-Method': 'GET' });
+    let headers = new Headers({ 'Access-Control-Request-Method': 'GET' });
     let options = new RequestOptions({ headers: headers })
     return this.http
       .get(this.api_url, options)
@@ -34,7 +43,9 @@ export class AgendaService {
 
           return sessionsWithZenSpeakers.map(session => {
             const agenda = {
-              hour: x.agenda['day'+session.agenda.day].find(hour => hour.id === session.agenda.hour)
+              hour: x.agenda['day'+session.agenda.day].find(hour => hour.id === session.agenda.hour),
+              room: rooms[session.agenda.room],
+              day: session.agenda.day === 1 ? 'Mercredi' : 'Jeudi'
             };
             const speakers = session.speaker.map(speaker => x.speakers.find(s => s.id === speaker));
             return Object.assign({},

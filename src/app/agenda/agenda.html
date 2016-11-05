@@ -2,9 +2,10 @@
 
 <div *ngFor="let item of sessions" class="session" [ngClass]="{'to-fade-out': isToFadeOut }">
     <div class="session-location">
-      <p>{{item.agenda.hour.label}} - TODO</p>
+      <p>{{item.agenda.day}} à {{item.agenda.hour.label}} - Salle {{item.agenda.room}}</p>
     </div>
   <div *ngFor="let speaker of item.speakers, #last=last" class="speaker">
+    <img class="user-pic" src="https://devfest.gdgnantes.com/images/speakers/{{speaker.photo}}">
     <span class="user-name">{{speaker.firstname}} {{speaker.name}}</span>
     <span *ngIf="!last"> &&nbsp;</span>
   </div>
