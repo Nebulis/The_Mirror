@@ -40,6 +40,13 @@ export class AgendaService {
               .map(speaker => speaker.sessions.map(speakerSession => x.sessions.find(session => speakerSession === session.id))) // get sessions
               .flatten()
               .reduce((acc, session) => acc.find(existingSession => existingSession.id === session.id) ? acc : acc.concat(session), []) // remove double
+              .sort((a,b) => {
+                if(a.agenda.day !== b.agenda.day) {
+                  return a.agenda.day - b.agenda.day;
+                } else {
+                  return a.agenda.hour - b.agenda.hour;
+                }
+              });
 
           return sessionsWithZenSpeakers.map(session => {
             const agenda = {

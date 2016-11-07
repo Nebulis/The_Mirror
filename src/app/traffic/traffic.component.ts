@@ -72,7 +72,6 @@ export class TrafficComponent implements OnInit{
           position: myLatLng,
           map: this.map,
           title: 'ENSEIRB',
-          label: 'IO'
       });
 
   }

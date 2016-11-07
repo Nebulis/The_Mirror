@@ -4,10 +4,12 @@
     <div class="session-location">
       <p>{{item.agenda.day}} à {{item.agenda.hour.label}} - Salle {{item.agenda.room}}</p>
     </div>
-  <div *ngFor="let speaker of item.speakers, #last=last" class="speaker">
-    <img class="user-pic" src="https://devfest.gdgnantes.com/images/speakers/{{speaker.photo}}">
-    <span class="user-name">{{speaker.firstname}} {{speaker.name}}</span>
-    <span *ngIf="!last"> &&nbsp;</span>
+  <div class="speakerContainer">
+    <div *ngFor="let speaker of item.speakers, #last=last" class="speaker">
+      <img class="user-pic" src="https://devfest.gdgnantes.com/images/speakers/{{speaker.photo}}">
+      <span class="user-name">{{speaker.firstname}} {{speaker.name}}</span>
+      <span *ngIf="!last">&nbsp;&&nbsp;</span>
+    </div>
   </div>
     <div class="session-content">
       <p>{{item.session.name}}</p>
